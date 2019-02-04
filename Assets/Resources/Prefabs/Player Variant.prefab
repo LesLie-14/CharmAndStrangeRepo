@@ -121,7 +121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1892420787937326, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1892420787937326, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
       propertyPath: m_TagString
@@ -159,6 +159,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4985777773331140, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985777773331140, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985777773331140, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 212304091429807372, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -378,10 +390,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1879137643466938, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212071594402836278, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
@@ -483,10 +491,15 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 50891965311963048, guid: 8cc81305d37e7f546ac8b6604aca1497,
+    - target: {fileID: 70242907774875010, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
-      propertyPath: m_Mass
-      value: 1
+      propertyPath: m_Offset.x
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 70242907774875010, guid: 8cc81305d37e7f546ac8b6604aca1497,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 70242907774875010, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
@@ -498,33 +511,19 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 3.36
       objectReference: {fileID: 0}
-    - target: {fileID: 70242907774875010, guid: 8cc81305d37e7f546ac8b6604aca1497,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 70242907774875010, guid: 8cc81305d37e7f546ac8b6604aca1497,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 114243888756026540, guid: 8cc81305d37e7f546ac8b6604aca1497,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 114243888756026540, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
       propertyPath: groundedEnd
       value: 
       objectReference: {fileID: 239070635}
+    - target: {fileID: 114243888756026540, guid: 8cc81305d37e7f546ac8b6604aca1497,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1797582365457212, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
       propertyPath: m_Name
       value: Swordsman_Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 4372054120543010, guid: 8cc81305d37e7f546ac8b6604aca1497, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212160940615599348, guid: 8cc81305d37e7f546ac8b6604aca1497,
         type: 3}
