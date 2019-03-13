@@ -13,6 +13,16 @@ public class ElementoControls : MonoBehaviour
     GameObject strange;
     GameObject cam;
 
+    //for the animator component
+    Animator playerAnim;
+    //to get the horizontal axis
+    float hor;
+    public float speed = 5;
+
+    //For jump using ray casting
+    bool grounded = true;
+    Transform jumpPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,30 +33,61 @@ public class ElementoControls : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
 
         strange.SetActive(false);
+
+        playerAnim = gameObject.GetComponent<Animator>();
+
+        jumpPoint = GameObject.FindGameObjectWithTag("jumpPoint").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.X)) {
+        Raycasting();
+        hor = Input.GetAxisRaw("Horizontal");
+        body.velocity = new Vector2(hor * speed, body.velocity.y);
+        playerAnim.SetFloat("walk", Mathf.Abs(hor));
+
+        if (hor < 0)
+        {
+            if (gameObject.transform.localScale.x != -4f)
+            {
+                gameObject.transform.localScale = new Vector3(-4,
+               gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            }
+
+        }
+        if (hor > 0)
+        {
+            if (gameObject.transform.localScale.x != 4f)
+            {
+                gameObject.transform.localScale = new Vector3(4f, 
+                    gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.X)) {
            charm.SetActive(!charm.activeSelf);
            strange.SetActive(!charm.activeSelf);
        }
 
-       if (Input.GetKey(KeyCode.LeftArrow)) {
-            transform.position += new Vector3(-0.1f, 0, 0);
-
-       } else if (Input.GetKey(KeyCode.RightArrow)) {
-            transform.position += new Vector3(0.1f, 0, 0);
-       }
-
-       if (Input.GetKeyDown(KeyCode.Space)) {
+       if (Input.GetKeyDown(KeyCode.Space) && grounded == true) {
            body.AddForce(new Vector2(0, 60));
        }
 
     }
 
     void FixedUpdate(){
-        cam.transform.position = new Vector3(gameObject.transform.position.x, cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(gameObject.transform.position.x, 
+            cam.transform.position.y, cam.transform.position.z);
+    }
+
+    //Raycast method for jumping to avoid infinite jumps
+    void Raycasting()
+    {
+        Debug.DrawLine(this.transform.position, jumpPoint.transform.position, Color.red);
+
+        grounded = Physics2D.Linecast(this.transform.position, jumpPoint.transform.position,
+                   1 << LayerMask.NameToLayer("Ground"));
     }
 }

@@ -115,8 +115,10 @@ public class CharacterController_2D : MonoBehaviour {
         {
           //  Debug.Log("Left");
             m_rigidbody.AddForce(Vector2.left * MoveSpeed);
-            if (B_FacingRight)
-                Filp();
+            gameObject.transform.localScale = new Vector3(-4,
+              gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            //if (B_FacingRight)
+            //Filp();
 
 
         }
@@ -126,8 +128,10 @@ public class CharacterController_2D : MonoBehaviour {
         {
           //  Debug.Log("Right");
             m_rigidbody.AddForce(Vector2.right * MoveSpeed);
-            if (!B_FacingRight)
-                Filp();
+            gameObject.transform.localScale = new Vector3(4,
+              gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            //if (!B_FacingRight)
+            //    Filp();
         }
 
         //For up movement
@@ -162,7 +166,7 @@ public class CharacterController_2D : MonoBehaviour {
 
     void Filp()
     {
-        B_FacingRight = !B_FacingRight;
+        //B_FacingRight = !B_FacingRight;
 
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
