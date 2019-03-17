@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Elemento : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class Elemento : MonoBehaviour
 
     //crystals
     int crystals = 0;
-    Text CrystalText;
+    TextMeshProUGUI CrystalText;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class Elemento : MonoBehaviour
         jump0 = GameObject.Find("Jump0").transform;
         jump1 = GameObject.Find("Jump1").transform;
 
-        CrystalText = GameObject.Find("CrystalsText").GetComponent<Text>();
+        CrystalText = GameObject.Find("CrystalsText").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -54,7 +55,7 @@ public class Elemento : MonoBehaviour
         hor = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(hor * speed, body.velocity.y);
 
-        CrystalText.text = "CRYSTALS: " + crystals;
+        CrystalText.SetText("CRYSTALS: " + crystals);
 
         if (hor < 0)
         {

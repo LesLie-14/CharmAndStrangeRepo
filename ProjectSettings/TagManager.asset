@@ -6,6 +6,8 @@ TagManager:
   tags:
   - failmsg
   - jumpPoint
+  - timer
+  - finishpoint
   layers:
   - Default
   - TransparentFX
