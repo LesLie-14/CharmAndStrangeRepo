@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Elemento : MonoBehaviour
 {
@@ -27,8 +28,12 @@ public class Elemento : MonoBehaviour
     Transform jump1;
 
     //crystals
-    int crystals = 0;
+    public static int crystals = 0;
     TextMeshProUGUI CrystalText;
+
+    //hits
+    public static int hits = 3;
+    TextMeshProUGUI HitsText;
 
     // Start is called before the first frame update
     void Start()
@@ -47,15 +52,25 @@ public class Elemento : MonoBehaviour
         jump1 = GameObject.Find("Jump1").transform;
 
         CrystalText = GameObject.Find("CrystalsText").GetComponent<TextMeshProUGUI>();
+        HitsText = GameObject.Find("HitsText").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -5.0 && hits > 0) 
+         hits = 0;
+
+        if(hits <= 0) {
+            hits = 0;
+            SceneManager.LoadScene(4);
+        }
+
         hor = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(hor * speed, body.velocity.y);
 
         CrystalText.SetText("CRYSTALS: " + crystals);
+        HitsText.SetText("HITS: " + hits);
 
         if (hor < 0)
         {
@@ -78,9 +93,10 @@ public class Elemento : MonoBehaviour
             playerAnim.SetBool("walk", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.X)) {
+        if (Input.GetKeyDown(KeyCode.X) && crystals > 0) {
            charm.SetActive(!charm.activeSelf);
            strange.SetActive(!charm.activeSelf);
+           crystals -= 1;
         } 
         
         if (Input.GetKeyDown(KeyCode.Z) && Grounded()) {

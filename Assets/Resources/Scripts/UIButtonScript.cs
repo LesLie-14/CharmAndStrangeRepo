@@ -27,6 +27,7 @@ public class UIButtonScript : MonoBehaviour {
 
     public void RestartGame()
     {
+        Elemento.hits = 3;
         SceneManager.LoadScene(1);
     }
 }
