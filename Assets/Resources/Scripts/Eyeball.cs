@@ -43,6 +43,8 @@ public class Eyeball : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-
+        if(collision.gameObject.tag  == "Player") {
+            Elemento.hits -= 1;
+        }
     }
 }

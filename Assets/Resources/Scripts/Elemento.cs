@@ -11,6 +11,7 @@ public class Elemento : MonoBehaviour
     public float jumpTakeOffSpeed = 1.0f;
 
     Rigidbody2D body;
+    Collider2D col;
 
     GameObject charm;
     GameObject strange;
@@ -43,6 +44,7 @@ public class Elemento : MonoBehaviour
         cam = GameObject.Find("Camera");
 
         body = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
 
         strange.SetActive(false);
 
@@ -96,9 +98,14 @@ public class Elemento : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.X) && crystals > 0) {
-           charm.SetActive(!charm.activeSelf);
-           strange.SetActive(!charm.activeSelf);
-           crystals -= 1;
+            if (crystals >= 10 && AtTear()) {
+                crystals -= 10;
+                SceneManager.LoadScene(4);
+            } else if (crystals > 0) {
+                charm.SetActive(!charm.activeSelf);
+                strange.SetActive(!charm.activeSelf);
+                crystals -= 1;
+            }
         } 
         
         if (Input.GetKeyDown(KeyCode.Z) && grounded) {
@@ -121,5 +128,9 @@ public class Elemento : MonoBehaviour
         return (Physics2D.Linecast(this.transform.position, jump0.transform.position,
                    1 << LayerMask.NameToLayer("Ground")) || Physics2D.Linecast(this.transform.position, jump1.transform.position,
                    1 << LayerMask.NameToLayer("Ground")));
+    }
+
+    bool AtTear() {
+        return Physics2D.IsTouchingLayers(col, LayerMask.GetMask("Tear"));
     }
 }
