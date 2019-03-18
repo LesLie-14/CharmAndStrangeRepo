@@ -58,6 +58,8 @@ public class Elemento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        grounded = Grounded();
+
         if (transform.position.y < -5.0 && hits > 0) 
          hits = 0;
 
@@ -99,7 +101,7 @@ public class Elemento : MonoBehaviour
            crystals -= 1;
         } 
         
-        if (Input.GetKeyDown(KeyCode.Z) && Grounded()) {
+        if (Input.GetKeyDown(KeyCode.Z) && grounded) {
              body.AddForce(new Vector2(0, 70));
         } 
 
