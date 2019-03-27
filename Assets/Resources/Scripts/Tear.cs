@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystal : MonoBehaviour
+public class Tear : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,5 @@ public class Crystal : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void  OnTriggerEnter2D(Collider2D collision) {
-        //add crystal to player
-        if(collision.tag  == "Player") {
-            Elemento.crystals += 1;
-        }
-        Destroy(gameObject);
     }
 }
