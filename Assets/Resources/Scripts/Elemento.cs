@@ -108,7 +108,7 @@ public class Elemento : MonoBehaviour
             }
         } 
         
-        if (Input.GetKeyDown(KeyCode.Z) && grounded) {
+        if (Input.GetKeyDown(KeyCode.Space) && grounded) {
              body.AddForce(new Vector2(0, 70));
         } 
 
