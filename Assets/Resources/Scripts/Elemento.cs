@@ -32,6 +32,15 @@ public class Elemento : MonoBehaviour
     public static int crystals = 0;
     TextMeshProUGUI CrystalText;
 
+    //Fore Shooting 
+    public GameObject projectile;
+    public float fireDelta = 0.5F;
+
+    private float nextFire = 0.5F;
+    private GameObject newProjectile;
+    private float myTime = 0.0F;
+    Transform spawnPoint;
+
     //hits
     public static int hits = 3;
     TextMeshProUGUI HitsText;
@@ -53,6 +62,9 @@ public class Elemento : MonoBehaviour
         jump0 = GameObject.Find("Jump0").transform;
         jump1 = GameObject.Find("Jump1").transform;
 
+        //Fire Spawn Point
+        spawnPoint = GameObject.FindGameObjectWithTag("firespawn").GetComponent<Transform>();
+
         CrystalText = GameObject.Find("CrystalsText").GetComponent<TextMeshProUGUI>();
         HitsText = GameObject.Find("HitsText").GetComponent<TextMeshProUGUI>();
     }
@@ -60,6 +72,30 @@ public class Elemento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Shooting Fire Projectile
+        myTime = myTime + Time.deltaTime;
+        if (Input.GetButton("Fire1") && myTime > nextFire)
+        {
+            nextFire = myTime + fireDelta;
+            Quaternion fireRotation;
+            if (transform.localScale.x == -4)
+            {
+                fireRotation = Quaternion.Euler(0, 0, 270);
+            }
+            else
+            {
+                fireRotation = Quaternion.Euler(0, 0, 90);
+            }
+            newProjectile = Instantiate(projectile, spawnPoint.transform.position, fireRotation) as GameObject;
+            newProjectile.GetComponent<AudioSource>().Play();
+
+            Debug.Log("Fire");
+            nextFire = nextFire - myTime;
+            myTime = 0.0F;
+        }
+
+
         grounded = Grounded();
 
         if (transform.position.y < -5.0 && hits > 0) 
@@ -133,4 +169,12 @@ public class Elemento : MonoBehaviour
     bool AtTear() {
         return Physics2D.IsTouchingLayers(col, LayerMask.GetMask("Tear"));
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "enemy")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
 }

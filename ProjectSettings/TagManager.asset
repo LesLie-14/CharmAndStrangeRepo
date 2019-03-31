@@ -8,6 +8,9 @@ TagManager:
   - jumpPoint
   - timer
   - finishpoint
+  - firespawn
+  - enemy
+  - spell
   layers:
   - Default
   - TransparentFX
