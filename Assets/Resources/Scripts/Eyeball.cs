@@ -30,10 +30,12 @@ public class Eyeball : MonoBehaviour
         } 
 
         if (leftdir) {
-            body.velocity = new Vector2(-1, speed * body.velocity.y);   
+            body.velocity = new Vector2(-1, speed * body.velocity.y);
+            this.transform.localScale= new Vector3(4,4,4);
          } else {
-             body.velocity = new Vector2(1, speed * body.velocity.y);   
-         }
+             body.velocity = new Vector2(1, speed * body.velocity.y);
+            this.transform.localScale = new Vector3(-4, 4, 4);
+        }
     }
 
     bool Grounded() {

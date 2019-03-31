@@ -11,6 +11,8 @@ TagManager:
   - firespawn
   - enemy
   - spell
+  - xkey
+  - xKeyText
   layers:
   - Default
   - TransparentFX

@@ -144,7 +144,8 @@ public class Elemento : MonoBehaviour
             }
         } 
         
-        if (Input.GetKeyDown(KeyCode.Space) && grounded) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Jump");
              body.AddForce(new Vector2(0, 70));
         } 
 
