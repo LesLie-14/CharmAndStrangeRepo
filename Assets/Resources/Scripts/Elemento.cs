@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class Elemento : MonoBehaviour
 {
+    //score
+    public static int score = 0;
+
+    //time
+    public static float time = 0;
+
     public float maxSpeed = 1.0f;
     public float jumpTakeOffSpeed = 1.0f;
 
@@ -29,8 +35,11 @@ public class Elemento : MonoBehaviour
     Transform jump1;
 
     //crystals
-    public static int crystals = 0;
+    public static int crystals = 10;
     TextMeshProUGUI CrystalText;
+
+    //level
+    public static int level = 1;
 
     //Fore Shooting 
     public GameObject projectile;
@@ -116,8 +125,7 @@ public class Elemento : MonoBehaviour
         {
             if (gameObject.transform.localScale.x != -4f)
             {
-                gameObject.transform.localScale = new Vector3(-4,
-                    gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = new Vector3(-4, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
             }
             playerAnim.SetBool("walk", true);
         }
@@ -125,8 +133,7 @@ public class Elemento : MonoBehaviour
         {
             if (gameObject.transform.localScale.x != 4f)
             {
-                gameObject.transform.localScale = new Vector3(4f, 
-                    gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = new Vector3(4f, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
             }
             playerAnim.SetBool("walk", true);
         } else {
@@ -136,7 +143,7 @@ public class Elemento : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && crystals > 0) {
             if (crystals >= 10 && AtTear()) {
                 crystals -= 10;
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(5);
             } else if (crystals > 0) {
                 charm.SetActive(!charm.activeSelf);
                 strange.SetActive(!charm.activeSelf);
@@ -170,6 +177,7 @@ public class Elemento : MonoBehaviour
     bool AtTear() {
         return Physics2D.IsTouchingLayers(col, LayerMask.GetMask("Tear"));
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "enemy")

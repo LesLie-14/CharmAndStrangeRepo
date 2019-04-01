@@ -19,9 +19,9 @@ public class TimerScript : MonoBehaviour {
 	void Update () {
 
        // if (finished)   return;
-        float t = Time.time - startTime;
-        string min = ((int)t / 60).ToString().PadLeft(2, '0');
-        string sec = (t % 60).ToString("f0").PadLeft(2, '0');
+        Elemento.time = Time.time - startTime;
+        string min = ((int)Elemento.time / 60).ToString().PadLeft(2, '0');
+        string sec = (Elemento.time % 60).ToString("f0").PadLeft(2, '0');
 
         timerText.SetText("TIME: " + min + " : " + sec);
 

@@ -34183,7 +34183,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1658edc4dedd7874dbff97e01375f906, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -34201,7 +34201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702591202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.24, y: -4.14, z: 0}
+  m_LocalPosition: {x: 65.24, y: -3.5, z: 0}
   m_LocalScale: {x: 0.0977981, y: 0.0977981, z: 0.0977981}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34491,7 +34491,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2591f0b8a26f06a4abeb1dade0a5c6a5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -34509,7 +34509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247837426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.86, y: -3.92, z: 0}
+  m_LocalPosition: {x: 6.86, y: -3.5, z: 0}
   m_LocalScale: {x: 0.103318535, y: 0.103318535, z: 0.103318535}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34629,7 +34629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1317321298}
   - component: {fileID: 1317321297}
-  - component: {fileID: 1317321300}
   - component: {fileID: 1317321299}
   m_Layer: 10
   m_Name: Tear
@@ -34694,8 +34693,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317321296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.52, y: 2.77, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 48.43, y: 3.101, z: 0}
+  m_LocalScale: {x: 6.3465204, y: 6.071092, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -34726,18 +34725,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &1317321300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317321296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82717d684a911e642811cdf8312235bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1336206316
 GameObject:
   m_ObjectHideFlags: 0
@@ -35066,7 +35053,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 487838d10dc2feb46a99a7d5b023dc47, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -35084,7 +35071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558074641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.83, y: -3.66, z: 0}
+  m_LocalPosition: {x: -6.83, y: -3.5, z: 0}
   m_LocalScale: {x: 0.4521761, y: 0.4521761, z: 0.4521761}
   m_Children: []
   m_Father: {fileID: 0}
@@ -36381,6 +36368,38 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664252529001, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664205458313, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Collect 10 crystals to seal the tear
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664205458313, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664205458313, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664205458313, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8520418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025778664205458313, guid: a1038e843a72bde4492fb08b40128573,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1038e843a72bde4492fb08b40128573, type: 3}

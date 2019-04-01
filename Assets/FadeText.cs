@@ -22,7 +22,7 @@ public class FadeText : MonoBehaviour
         }
 
         
-            Color myColor = Color.white;
+            Color myColor = Color.yellow;
             float ratio = Time.time / duration;
             myColor.a = Mathf.Lerp(0, 1, ratio);
             objectiveText.color = myColor;

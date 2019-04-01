@@ -5,19 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void LoadScene()
+    public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -29,5 +19,11 @@ public class UIButtonScript : MonoBehaviour {
     {
         Elemento.hits = 3;
         SceneManager.LoadScene(1);
+    }
+
+    public void Continue()
+    {
+        Elemento.crystals = 0;
+        SceneManager.LoadScene(Elemento.level);
     }
 }
