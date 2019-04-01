@@ -35,7 +35,7 @@ public class Elemento : MonoBehaviour
     Transform jump1;
 
     //crystals
-    public static int crystals = 10;
+    public static int crystals = 0;
     TextMeshProUGUI CrystalText;
 
     //level
@@ -143,6 +143,7 @@ public class Elemento : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && crystals > 0) {
             if (crystals >= 10 && AtTear()) {
                 crystals -= 10;
+                level += 1;
                 SceneManager.LoadScene(5);
             } else if (crystals > 0) {
                 charm.SetActive(!charm.activeSelf);

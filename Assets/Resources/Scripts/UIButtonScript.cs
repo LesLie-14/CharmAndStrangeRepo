@@ -18,7 +18,7 @@ public class UIButtonScript : MonoBehaviour {
     public void RestartGame()
     {
         Elemento.hits = 3;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(Elemento.level);
     }
 
     public void Continue()
