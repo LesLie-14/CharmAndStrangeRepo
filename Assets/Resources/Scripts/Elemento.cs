@@ -152,7 +152,7 @@ public class Elemento : MonoBehaviour
             }
         } 
         
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetAxis("Jump") > 0) ) {
             Debug.Log("Jump");
              body.AddForce(new Vector2(0, 70));
         } 
