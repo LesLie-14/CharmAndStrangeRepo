@@ -13,6 +13,7 @@ TagManager:
   - spell
   - xkey
   - xKeyText
+  - zkey
   layers:
   - Default
   - TransparentFX
