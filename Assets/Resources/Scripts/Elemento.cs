@@ -57,6 +57,12 @@ public class Elemento : MonoBehaviour
     public static int hits = 3;
     TextMeshProUGUI HitsText;
 
+    //For player blinking
+    bool hitOccured = false;
+    bool coroutineCalled = false;
+    bool colorchange = false;
+    float damagebreaktimer = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,9 +94,42 @@ public class Elemento : MonoBehaviour
         Physics2D.IgnoreLayerCollision(12, 9, true); 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    //Coroutine for player flash on hit
+    IEnumerator color()
     {
+        while (colorchange && hitOccured)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.3f);
+            GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.3f);
+            GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+        if (hitOccured)
+        {
+            damagebreaktimer -= 1 * Time.deltaTime;
+            colorchange = true;
+        }
+
+        if (colorchange && hitOccured)
+        {
+            if (!coroutineCalled)
+            {
+                StartCoroutine("color");
+                hitOccured = false;
+            }
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
+
         //Shooting Fire Projectile
         myTime = myTime + Time.deltaTime;
         if ((Input.GetKeyDown(KeyCode.Z) || Input.GetButton("Fire1")) && myTime > nextFire && crystals > 0)
@@ -209,6 +248,7 @@ public class Elemento : MonoBehaviour
         {
            // Destroy(collision.gameObject);
             Elemento.hits -= 1;
+            hitOccured = true;
             sounds[0].Play();
         }
     }
