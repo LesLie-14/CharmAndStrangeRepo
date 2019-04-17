@@ -93,7 +93,7 @@ public class Elemento : MonoBehaviour
     {
         //Shooting Fire Projectile
         myTime = myTime + Time.deltaTime;
-        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetButton("Fire1")) && myTime > nextFire && crystals > 0)
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetButton("Fire1")) && myTime > nextFire && crystals > 0)
         {
             nextFire = myTime + fireDelta;
             Quaternion fireRotation;
