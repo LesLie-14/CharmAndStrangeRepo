@@ -60,6 +60,7 @@ public class Elemento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        crystals = 0;
         sounds = GetComponents<AudioSource>();
 
         charm = GameObject.Find("Charm");
