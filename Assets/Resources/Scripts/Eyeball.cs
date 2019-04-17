@@ -15,8 +15,6 @@ public class Eyeball : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        
-        Physics.IgnoreLayerCollision(9, 9, true);
     }
 
     // Update is called once per frame
@@ -41,12 +39,5 @@ public class Eyeball : MonoBehaviour
     bool Grounded() {
         return (Physics2D.Linecast(transform.position, new Vector3(transform.position.x,  transform.position.y-1.2f,  transform.position.z),
             1 << LayerMask.NameToLayer("Ground")));
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag  == "Player") {
-            Elemento.hits -= 1;
-        }
     }
 }

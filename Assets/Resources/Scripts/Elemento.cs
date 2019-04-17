@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Elemento : MonoBehaviour
 {
+    public AudioSource [] sounds;
+
     //score
     public static int score = 0;
 
@@ -58,6 +60,8 @@ public class Elemento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sounds = GetComponents<AudioSource>();
+
         charm = GameObject.Find("Charm");
         strange = GameObject.Find("Strange");
         cam = GameObject.Find("Camera");
@@ -77,6 +81,10 @@ public class Elemento : MonoBehaviour
 
         CrystalText = GameObject.Find("CrystalsText").GetComponent<TextMeshProUGUI>();
         HitsText = GameObject.Find("HitsText").GetComponent<TextMeshProUGUI>();
+
+        //enemies and player don't physically collide with each other
+        Physics2D.IgnoreLayerCollision(9, 9, true); 
+        Physics2D.IgnoreLayerCollision(12, 9, true); 
     }
 
     // Update is called once per frame
@@ -84,7 +92,7 @@ public class Elemento : MonoBehaviour
     {
         //Shooting Fire Projectile
         myTime = myTime + Time.deltaTime;
-        if (Input.GetButton("Fire1") && myTime > nextFire)
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetButton("Fire1")) && myTime > nextFire && crystals > 0)
         {
             nextFire = myTime + fireDelta;
             Quaternion fireRotation;
@@ -102,6 +110,8 @@ public class Elemento : MonoBehaviour
             Debug.Log("Fire");
             nextFire = nextFire - myTime;
             myTime = 0.0F;
+
+            crystals -= 1;
         }
 
         isGrounded = Grounded();
@@ -143,12 +153,22 @@ public class Elemento : MonoBehaviour
             playerAnim.SetBool("walk", false);
         }
 
+        if (!sounds[3].isPlaying && hor != 0 && isGrounded) {
+            sounds[3].Play();
+        } 
+        
+        if (sounds[3].isPlaying && (hor == 0 || !isGrounded || isJumping)) {
+            sounds[3].Stop();
+        }
+
         if (Input.GetKeyDown(KeyCode.X) && crystals > 0) {
             if (crystals >= 10 && AtTear()) {
+                sounds[2].Play();
                 crystals -= 10;
                 level += 1;
                 SceneManager.LoadScene(5);
             } else if (crystals > 0) {
+                sounds[2].Play();
                 charm.SetActive(!charm.activeSelf);
                 strange.SetActive(!charm.activeSelf);
                 crystals -= 1;
@@ -160,6 +180,7 @@ public class Elemento : MonoBehaviour
             //body.AddForce(new Vector2(0, 70));
             body.velocity = new Vector2(0, 14);
             isJumping = true;
+            sounds[1].Play();
         }
 
         cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
@@ -182,9 +203,12 @@ public class Elemento : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.tag == "enemy")
         {
-            Destroy(collision.gameObject);
+           // Destroy(collision.gameObject);
+            Elemento.hits -= 1;
+            sounds[0].Play();
         }
     }
 
