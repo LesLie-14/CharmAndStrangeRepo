@@ -243,6 +243,9 @@ public class Elemento : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "crystal") {
+            sounds[4].Play();
+        }
 
         if (collision.tag == "enemy")
         {
