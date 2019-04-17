@@ -291,7 +291,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &6045095322533061907
 BoxCollider2D:
@@ -344,7 +344,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f049e9aafe1834642ad814bd6385bb4b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -441,7 +441,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2186ea0f64ad79d4d8039b36b606f70f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -538,7 +538,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ae2e768e8cc7cb840ae26ca4a0772601, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -635,8 +635,8 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 34f8b4cf5834f9840aa1d2439fc1b5b8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: -0.81
+  m_Volume: 0.2
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
