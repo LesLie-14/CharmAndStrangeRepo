@@ -30,7 +30,8 @@ public class Elemento : MonoBehaviour
     public float speed = 5;
 
     //For jump using ray casting
-    bool grounded = true;
+    bool isGrounded = true;
+    bool isJumping = false;
     Transform jump0;
     Transform jump1;
 
@@ -79,9 +80,8 @@ public class Elemento : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
         //Shooting Fire Projectile
         myTime = myTime + Time.deltaTime;
         if (Input.GetButton("Fire1") && myTime > nextFire)
@@ -104,8 +104,11 @@ public class Elemento : MonoBehaviour
             myTime = 0.0F;
         }
 
+        isGrounded = Grounded();
 
-        grounded = Grounded();
+        if (isJumping && isGrounded) {
+            isJumping = false;
+        }
 
         if (transform.position.y < -5.0 && hits > 0) 
          hits = 0;
@@ -151,17 +154,15 @@ public class Elemento : MonoBehaviour
                 crystals -= 1;
             }
         } 
-        
-        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetAxis("Jump") > 0) ) {
+
+        if ((Input.GetAxis("Jump") > 0 || Input.GetKeyDown(KeyCode.Space)) && isGrounded) {
             Debug.Log("Jump");
-             body.AddForce(new Vector2(0, 70));
-        } 
+            //body.AddForce(new Vector2(0, 70));
+            body.velocity = new Vector2(0, 14);
+            isJumping = true;
+        }
 
-    }
-
-    void FixedUpdate(){
-        cam.transform.position = new Vector3(gameObject.transform.position.x, 
-            cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
     }
 
     //Raycast method for jumping to avoid infinite jumps

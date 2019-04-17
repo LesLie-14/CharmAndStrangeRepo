@@ -9,7 +9,7 @@ public class Eyeball : MonoBehaviour
     bool leftdir = true;
     public float speed = 5.0f;
 
-    bool grounded = true;
+    bool isGrounded = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,10 @@ public class Eyeball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        grounded = Grounded();
+        isGrounded = Grounded();
 
         //System.Console.WriteLine(grounded);
-        if(!grounded) {
+        if(!isGrounded) {
             leftdir = !leftdir;
         } 
 
